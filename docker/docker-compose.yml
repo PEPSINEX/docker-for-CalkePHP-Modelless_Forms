@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  # PHP-Apache
+  myapp-web:
+    container_name: myapp-web
+    # ./myapp-web/Dockerfile でイメージをビルド
+    build:
+      context: ./myapp-web
+      dockerfile: Dockerfile
+    # 80 番ポートを割り当て
+    ports:
+      - "80:80"
+    # ローカル の html フォルダを
+    # コンテナの /var/www/html にマウント
+    volumes:
+      - "../html:/var/www/html"
